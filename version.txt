@@ -1,0 +1,25 @@
+Ionic Material Design
+Version 2.0 - Released 4 October 2015
+——————————————————————————————————————————
+New Feature :
+- Single Push Notification
+- Schedule Push Notification
+——————————————————————————————————————————
+Update Library :
+ -Font Awesome 4.3.0 to 4.4.0
+——————————————————————————————————————————
+Compatibility :
+- This project was tested in IOS 9 iPhone 6s & 6s+ PASS
+- This project Can Build on Xcode 7 PASSS
+——————————————————————————————————————————
+Documentation :
+- Add new section for detail of Single Push Notification J-5-1
+- Add new section for detail of Schedule Push Notification J-5-2
+- Update VDO of section D.Getting Started for project installations IOS and Android.
+- Add Important note to all section in J.Component Detail
+- Update Google API Registration Instruction (Case of Google Update)
+- Update Instagram API Registration Instruction (Case of Instagram Update)
+- Add new section I-1 Theme Color About Theme Configuration.
+- Add new Known issues about Ionic View at section K.Known Issues.
+- Add Important note to section M.Support
+——————————————————————————————————————————

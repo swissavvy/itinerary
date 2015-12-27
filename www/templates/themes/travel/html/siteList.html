@@ -1,0 +1,42 @@
+<!--View Information-->
+<!--View name : Location Feed-->
+<!--State name : app.locationFeed-->
+<!--URL : #app/locationFeed-->
+
+<ion-view title="Attractions">
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="right">
+        <a href="#/app/maps" class="button back-button buttons button-clear header-item nav-back-btn">
+            <i class="ion-android-map"></i>
+        </a>
+    </ion-nav-buttons>
+    <!--end left button on navigation bar-->
+
+    <!--location feed section-->
+    <ion-content id="location-feed-content">
+        <!--list section-->
+        <div class="location-list">
+            <!--location item section-->
+            <div class="location-item" ng-repeat="item in items" ng-click="redirect('/app/viewSite/{{item.id}}')">
+                <div class="location-img" style="background-image:url('{{item.cover}}')">
+
+                </div>
+                <div class="location-content row">
+                    <div class="col-90">
+                        <h1>
+                            {{item.title}}
+                        </h1>
+
+                        <p>
+                            <i class="fa fa-flag"></i> {{item.position}}
+                        </p>
+                    </div>
+                    <div class="col-10">
+                        <span class="text-add">Add to trip</span>
+                    </div>
+                </div>
+            </div><!--end location item section-->
+
+        </div><!--end list section-->
+    </ion-content><!--end location feed section-->
+</ion-view>

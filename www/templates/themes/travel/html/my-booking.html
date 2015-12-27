@@ -1,0 +1,37 @@
+<!--View Information-->
+<!--View name : My Booking-->
+<!--State name : app.myBooking-->
+<!--URL : #app/myBooking-->
+<style type="text/css">
+    md-content{margin-top: 10px; background-color: #f6f6f6}
+    #location-feed-content .location-list .location-item .location-img{background-color: #FFFFFF}
+    .md-button{min-width: 20%; margin: 6px 4px}
+</style>
+<ion-view title="My Booking">
+    <!--location feed section-->
+    <ion-content id="location-feed-content">
+        <md-button ng-click="searchList(0)">All</md-button>
+        <md-button ng-click="searchList(1)">Hotels</md-button>
+        <md-button ng-click="searchList(2)">Flights</md-button>
+        <md-button ng-click="searchList(3)">Tours</md-button>
+
+
+        <!--list section-->
+        <div class="location-list">
+            <!--location item section-->
+            <div class="location-item" ng-repeat="item in items">
+                <div class="location-content row">
+                    <div class="col-90">
+                        <h1>{{item.title}}</h1>
+
+                        <p>
+                            <i class="fa fa-flag"></i> {{item.description}}
+                        </p>
+                    </div>
+                </div>
+            </div><!--end location item section-->
+        </div>
+        <!--end list section-->
+
+    </ion-content><!--end location feed section-->
+</ion-view>

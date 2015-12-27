@@ -1,0 +1,20 @@
+[
+  {
+    "label": "My Tour",
+    "url": "",
+    "items": [
+      {
+        "label": "All spots",
+        "url": "#/app/myBooking"
+      },
+      {
+        "label": "Favorite",
+        "url": "#/app/myBooking"
+      }
+    ]
+  },
+  {
+    "label": "Categories",
+    "url": ""
+  }
+]

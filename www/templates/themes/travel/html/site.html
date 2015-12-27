@@ -1,0 +1,160 @@
+<!--View Information-->
+<!--View name : Online Course-->
+<!--State name : app.onlineCourse-->
+<!--URL : #app/onlineCourse-->
+<style>
+    a.md-button.md-raised, .md-button.md-raised{color: #FFFFFF; margin: 0}
+    .course-item .audio{width: 100%}
+</style>
+
+<!--Online course section-->
+<ion-view title="Chinatown, Singapore" id="online-course">
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="$ionicGoBack()" class="button back-button buttons button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons>
+    <!--end left button on navigation bar-->
+
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="right">
+        <a ng-click="sharedProduct($event, site)" class="button back-button buttons button-clear header-item nav-back-btn">
+            <i class="ion-share"></i>
+        </a>
+    </ion-nav-buttons>
+    <!--end left button on navigation bar-->
+
+    <ion-content id="online-course-content">
+        <!--toolbar section-->
+        <md-toolbar class="bar-subheader md-tall md-primary toolbar-online-course ">
+            <div>
+                <img src="img/site.jpg" class="user-img"/>
+
+                <h1>Chinatown, Singapore</h1>
+
+                <h2>Address: Singapore</h2>
+            </div>
+
+        </md-toolbar> <!--end toolbar section-->
+        <div class="course-list">
+            <div class="course-item">
+                <audio src="app-data/travle_audio.mp3" controls="controls" class="audio"></audio>
+            </div>
+
+            <!--content item section-->
+            <div class="course-item">
+                <div class="title angular-course-background">
+                    Information
+                </div>
+                <div class="content">
+                    <p>
+                        Singapore's Chinatown is an ethnic neighbourhood featuring distinctly Chinese cultural elements and a historically concentrated ethnic Chinese population. Chinatown is located within the larger district of Outram.
+                    </p>
+                </div>
+            </div>
+            <!--end content item section-->
+
+            <!--content item section-->
+            <div class="course-item">
+                <div class="title angular-course-background">
+                    Description
+                </div>
+                <div class="content">
+                    <p>
+                        Singapore's Chinatown is an ethnic neighbourhood featuring distinctly Chinese cultural elements and a historically concentrated ethnic Chinese population. Chinatown is located within the larger district of Outram.
+                    </p>
+                </div>
+            </div>
+            <!--end content item section-->
+
+            <!--content item section-->
+            <div class="course-item">
+                <div class="title angular-course-background">
+                    Maps
+                </div>
+                <div class="content">
+                    <map center="{{center_position.lat}},{{center_position.lng}}" zoom="15">
+                        <marker
+                                position="{{current_position.lat}},{{current_position.lng}}"
+                                title="Hello Marker"
+                                visible="true">
+                        </marker>
+
+                        <marker
+                                position="42.07493,-89.381388"
+                                title="Hello 2 Marker"
+                                visible="true">
+                        </marker>
+
+                        <info-window id="1" position="{{info_position.lat}},{{info_position.lng}}" visible="true">
+                            <div ng-non-bindable="">
+                                <b>The best restaurant</b><br>
+                                This is html so you can put whatever <br>
+                                you want such as images and <a href="">links</a> <br>
+                                <img style=" border-radius: 24px;" src="http://lorempixel.com/50/50/food/?v=1"></img>
+                                <img style=" border-radius: 24px;" src="http://lorempixel.com/50/50/food/?v=2"></img>
+                                <img style=" border-radius: 24px;" src="http://lorempixel.com/50/50/food/?v=3"></img>
+                            </div>
+                        </info-window>
+
+
+                    </map>
+                </div>
+            </div>
+            <!--end content item section-->
+
+        </div>
+    </ion-content>
+
+    <div class="footer-fab-bar">
+        <a class="md-button md-accent md-fab fab-footer" aria-label="Add">
+            <i class="ion-arrow-right-b"></i>
+        </a>
+    </div>
+
+    <!--canvas for save image to local devise-->
+    <canvas id="imgCanvas" class="display-none"></canvas>
+
+    <!--angular template section-->
+    <script type="text/ng-template" id="bottom-sheet-shared.html">
+        <md-bottom-sheet class="md-grid">
+            <!--list section-->
+            <md-list id="bottom-sheet-grid-md-list">
+                <md-list-item>
+                    <a class="md-grid-item-content" ng-click="sharedFacebook()">
+                        <md-icon md-svg-src="facebook"></md-icon>
+                        <div class="md-grid-text"> Facebook</div>
+                    </a>
+                </md-list-item>
+                <md-list-item>
+                    <a class="md-grid-item-content" ng-click="sharedTwitter()">
+                        <md-icon md-svg-src="twitter"></md-icon>
+                        <div class="md-grid-text"> Twitter</div>
+                    </a>
+                </md-list-item>
+                <md-list-item>
+                    <a class="md-grid-item-content" ng-click="sharedMail()">
+                        <md-icon md-svg-src="mail"></md-icon>
+                        <div class="md-grid-text"> Mail</div>
+                    </a>
+                </md-list-item>
+                <md-list-item>
+                    <a class="md-grid-item-content" ng-click="saveImage()">
+                        <i class="ion-android-image"></i>
+
+                        <div class="md-grid-text"> Save Image</div>
+                    </a>
+                </md-list-item>
+                <md-list-item>
+                    <a class="md-grid-item-content" ng-click="sharedMore()">
+                        <md-icon md-svg-src="share-arrow"></md-icon>
+                        <div class="md-grid-text"> More</div>
+                    </a>
+                </md-list-item>
+            </md-list> <!--end list section-->
+        </md-bottom-sheet>
+    </script>
+    <!--end angular template section-->
+
+</ion-view><!--end online course section-->

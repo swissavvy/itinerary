@@ -1,0 +1,12 @@
+{
+  "name": "IonicMaterialDesign",
+  "app_id": "45f55d4e",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
+}

@@ -1,0 +1,18 @@
+﻿[
+  {
+    "id" : 1,
+    "cover" : "img/site_cover.jpg",
+    "title": "swisscrum",
+    "description": "Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id, consectetur adipi deese cing elit maus fringilla bibe endum.",
+    "audioUrl": "app-data/travle_audio.mp3",
+    "position": "Singapore"
+  },
+  {
+    "id" : 2,
+    "cover" : "img/site.jpg",
+    "title": "Chinatown",
+    "description": "Singapore's Chinatown is an ethnic neighbourhood featuring distinctly Chinese cultural elements and a historically concentrated ethnic Chinese population. Chinatown is located within the larger district of Outram.",
+    "audioUrl": "app-data/travle_audio.mp3",
+    "position": "Singapore"
+  }
+]

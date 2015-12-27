@@ -1,0 +1,64 @@
+<!--View Information-->
+<!--View name : Menu-->
+<!--Controller name : menuCtrl-->
+<!--Controller path : www/templates/menu/js/controllers.js-->
+<!--State name : app-->
+<!--URL : #app-->
+
+<ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-balanced  material-background-nav-bar" align-title="center">
+            <ion-nav-buttons side="left">
+                <a class="button button-icon button-clear ion-navicon" menu-toggle="left" ng-click="toggleLeft()"></a>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+    <md-sidenav md-component-id="left">
+        <!--menu section-->
+        <div class="material-background" id="toggle-menu-left-header">
+            <!--menu header section-->
+            <div class="menu-left-header">
+                <img class="user-img" src="{{user.avatar}}">
+
+                <p>
+                    <span class="title">{{user.username}}</span>
+                    <br/>
+                    <span class="sub-title">{{user.email}}</span>
+                </p>
+            </div><!--end menu header section-->
+        </div>
+        <!--menu content section-->
+        <ion-content id="toggle-menu-left-content">
+            <!--list section-->
+            <md-list>
+                <md-subheader class="assertive">My Tour</md-subheader>
+
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.siteList')">
+                    <i class="ion-home"></i>
+                    <span>All spots</span>
+                </md-list-item>
+
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.myBooking')">
+                    <i class="ion-star"></i>
+                    <span>Favorite</span>
+                </md-list-item>
+
+                <md-subheader class="assertive">Category</md-subheader>
+
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.siteList')">
+                    <i class="ion-home"></i>
+                    <span>All</span>
+                </md-list-item>
+
+                <md-subheader class="assertive">User</md-subheader>
+
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.index')">
+                    <i class="ion-home"></i>
+                    <span>Logout</span>
+                </md-list-item>
+            </md-list><!--end list section-->
+        </ion-content><!--end menu content section-->
+        <!--end menu section-->
+    </md-sidenav>
+</ion-side-menus>
