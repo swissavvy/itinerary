@@ -1,18 +1,18 @@
 /**
  * Created by Liv on 15/10/18.
  */
-appControllers.controller('myBookingCtrl', function ($scope, $filter) {
+appControllers.controller('myBookingCtrl', function ($scope, $filter, $http) {
 
     var TYPE_ALL = 0;
     var TYPE_HOTELS = 1;
     var TYPE_FLIGHTS = 2;
     var TYPE_SITE = 3;
+    var items = [];
 
-    var items = [
-        {cover: 'img/location_feed_01.png', title: 'swisscrum', description: 'Collection at 2015-10-12', type: 3},
-        {cover: 'img/location_feed_01.png', title: 'Marina Bay Sands', description: 'CHECK IN:18/10/2015 CHECK OUT:19/10/2015', type: 1},
-        {cover: 'img/location_feed_01.png', title: 'Orchard Hotel Singapore', description: 'CHECK IN:18/10/2015 CHECK OUT:19/10/2015', type: 2}
-    ];
+    $http.get('http://tour.swisscrum.com/api/user/collection?uid=1').success(function(result){
+        items = result.data;
+        $scope.items = items;
+    });
 
     $scope.searchList = function (type) {
         if(type == TYPE_ALL){
