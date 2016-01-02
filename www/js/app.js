@@ -35,7 +35,8 @@ window.globalVariable = {
         instagram: "your_api_key",//Use for Instagram API clientID.
         googlePlus: "your_api_key",//Use for Google API clientID.
         adMob: "your_api_key" //Use for AdMob API clientID.
-    }
+    },
+    apiDomain: 'http://tour.swisscrum.com'
 };// End Global variable
 
 

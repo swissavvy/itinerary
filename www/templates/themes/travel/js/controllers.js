@@ -9,7 +9,7 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, $http) {
     var TYPE_SITE = 3;
     var items = [];
 
-    $http.get('http://tour.swisscrum.com/api/user/collection?uid=1').success(function(result){
+    $http.get(window.globalVariable.apiDomain + '/api/user/collection?uid=1').success(function(result){
         items = result.data;
         $scope.items = items;
     });
@@ -27,7 +27,7 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, $http) {
 
 .controller('siteCtrl', function ($scope, $stateParams, $filter, $http, $mdBottomSheet) {
     var id = $stateParams.id;
-    $http.get('http://tour.swisscrum.com/api/site/view', {params: {id: id}}).success(function (result) {
+    $http.get(window.globalVariable.apiDomain + '/api/site/view', {params: {id: id}}).success(function (result) {
         $scope.site = result.data;
         console.log($scope.site);
     });
@@ -169,14 +169,14 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, $http) {
 .controller('siteListCtrl', function ($scope, $location, $http) {
     $scope.items = [];
 
-    $http.get('http://tour.swisscrum-local.com/api/site').success(function (result) {
+    $http.get(window.globalVariable.apiDomain + '/api/site').success(function (result) {
         $scope.items = result.data;
     });
 
     $scope.addCollect = function(item, $event){
         $event.stopPropagation();
 
-        $http.post('http://tour.swisscrum-local.com/api/site/add-collect', {id: item.id}).success(function(result){
+        $http.post(window.globalVariable.apiDomain + '/api/site/add-collect', {id: item.id}).success(function(result){
             if(result.status == 1){
                 item.isCollect = 1;
             }
@@ -186,7 +186,7 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, $http) {
     $scope.deleteCollect = function(item, $event){
         $event.stopPropagation();
 
-        $http.post('http://tour.swisscrum-local.com/api/site/delete-collect', {id: item.id}).success(function(result){
+        $http.post(window.globalVariable.apiDomain + '/api/site/delete-collect', {id: item.id}).success(function(result){
             if(result.status == 1){
                 item.isCollect = 0;
             }
