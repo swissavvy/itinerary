@@ -32,7 +32,8 @@
                         </p>
                     </div>
                     <div class="col-10">
-                        <span class="text-add">Add to trip</span>
+                        <span class="text-add" ng-if="item.isCollect == 1" ng-click="deleteCollect(item, $event)">Added to trip</span>
+                        <span class="text-add" ng-if="item.isCollect == 0" ng-click="addCollect(item, $event)">Add to trip</span>
                     </div>
                 </div>
             </div><!--end location item section-->

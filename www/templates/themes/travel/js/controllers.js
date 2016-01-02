@@ -27,13 +27,10 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, $http) {
 
 .controller('siteCtrl', function ($scope, $stateParams, $filter, $http, $mdBottomSheet) {
     var id = $stateParams.id;
-    $http.get('app-data/site-list.json')
-        .success(function (data) {
-            var sites = $filter('filter')(data, {id: id});
-
-            $scope.site = sites[0];
-            console.log($scope.site);
-        });
+    $http.get('http://tour.swisscrum.com/api/site/view', {params: {id: id}}).success(function (result) {
+        $scope.site = result.data;
+        console.log($scope.site);
+    });
 
     $scope.center_position = {
         lat: 43.07493,
@@ -172,10 +169,29 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, $http) {
 .controller('siteListCtrl', function ($scope, $location, $http) {
     $scope.items = [];
 
-    $http.get('app-data/site-list.json')
-        .success(function (data) {
-            $scope.items = data
+    $http.get('http://tour.swisscrum-local.com/api/site').success(function (result) {
+        $scope.items = result.data;
+    });
+
+    $scope.addCollect = function(item, $event){
+        $event.stopPropagation();
+
+        $http.post('http://tour.swisscrum-local.com/api/site/add-collect', {id: item.id}).success(function(result){
+            if(result.status == 1){
+                item.isCollect = 1;
+            }
         });
+    };
+
+    $scope.deleteCollect = function(item, $event){
+        $event.stopPropagation();
+
+        $http.post('http://tour.swisscrum-local.com/api/site/delete-collect', {id: item.id}).success(function(result){
+            if(result.status == 1){
+                item.isCollect = 0;
+            }
+        });
+    };
 
     $scope.redirect = function (url) {
         $location.path(url)

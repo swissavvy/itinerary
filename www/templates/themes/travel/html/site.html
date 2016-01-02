@@ -39,7 +39,7 @@
         </md-toolbar> <!--end toolbar section-->
         <div class="course-list">
             <div class="course-item">
-                <audio src="app-data/travle_audio.mp3" controls="controls" class="audio"></audio>
+                <audio src="{{site.audioUrl}}" controls="controls" class="audio"></audio>
             </div>
 
             <!--content item section-->
@@ -48,9 +48,7 @@
                     Information
                 </div>
                 <div class="content">
-                    <p>
-                        Singapore's Chinatown is an ethnic neighbourhood featuring distinctly Chinese cultural elements and a historically concentrated ethnic Chinese population. Chinatown is located within the larger district of Outram.
-                    </p>
+                    <p>{{site.description}}</p>
                 </div>
             </div>
             <!--end content item section-->
@@ -61,9 +59,7 @@
                     Description
                 </div>
                 <div class="content">
-                    <p>
-                        Singapore's Chinatown is an ethnic neighbourhood featuring distinctly Chinese cultural elements and a historically concentrated ethnic Chinese population. Chinatown is located within the larger district of Outram.
-                    </p>
+                    <p>{{site.description}}</p>
                 </div>
             </div>
             <!--end content item section-->
@@ -76,29 +72,20 @@
                 <div class="content">
                     <map center="{{center_position.lat}},{{center_position.lng}}" zoom="15">
                         <marker
-                                position="{{current_position.lat}},{{current_position.lng}}"
-                                title="Hello Marker"
+                                position="{{site.position}}"
+                                title="{{site.title}}"
                                 visible="true">
                         </marker>
 
-                        <marker
-                                position="42.07493,-89.381388"
-                                title="Hello 2 Marker"
-                                visible="true">
-                        </marker>
-
-                        <info-window id="1" position="{{info_position.lat}},{{info_position.lng}}" visible="true">
+                        <info-window id="{{site.id}}" position="{{site.position}}" visible="true">
                             <div ng-non-bindable="">
-                                <b>The best restaurant</b><br>
-                                This is html so you can put whatever <br>
-                                you want such as images and <a href="">links</a> <br>
+                                <b>{{site.title}}</b><br>
+                                {{site.description}}<br>
                                 <img style=" border-radius: 24px;" src="http://lorempixel.com/50/50/food/?v=1"></img>
                                 <img style=" border-radius: 24px;" src="http://lorempixel.com/50/50/food/?v=2"></img>
                                 <img style=" border-radius: 24px;" src="http://lorempixel.com/50/50/food/?v=3"></img>
                             </div>
                         </info-window>
-
-
                     </map>
                 </div>
             </div>
