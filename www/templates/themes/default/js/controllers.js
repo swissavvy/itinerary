@@ -1,7 +1,7 @@
 /**
  * Created by Liv on 15/10/30.
  */
-appControllers.controller('loginCtrl', function ($scope, $location, $http) {
+appControllers.controller('loginCtrl', function ($scope, $location, $http, userService) {
     $scope.loginForm = {
         username: "",
         password: ""
@@ -14,6 +14,8 @@ appControllers.controller('loginCtrl', function ($scope, $location, $http) {
         };
         $http.post(window.globalVariable.apiDomain + '/api/user/login', params).success(function(result){
             if(result.status == 1){
+                userService.setUserInfo(result.data[0]);
+                console.log(userService.userInfo);
                 $scope.navigateTo('app.siteList');
             }
         });
