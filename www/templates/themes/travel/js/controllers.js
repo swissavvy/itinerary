@@ -1,7 +1,7 @@
 /**
  * Created by Liv on 15/10/18.
  */
-appControllers.controller('myBookingCtrl', function ($scope, $filter, $http) {
+appControllers.controller('myBookingCtrl', function ($scope, $filter, userService) {
 
     var TYPE_ALL = 0;
     var TYPE_HOTELS = 1;
@@ -9,9 +9,11 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, $http) {
     var TYPE_SITE = 3;
     var items = [];
 
-    $http.get(window.globalVariable.apiDomain + '/api/user/collection?uid=1').success(function(result){
-        items = result.data;
+    userService.getCollects().then(function(list){
+        items = list;
         $scope.items = items;
+    }, function(msg){
+        console.log(msg);
     });
 
     $scope.searchList = function (type) {
