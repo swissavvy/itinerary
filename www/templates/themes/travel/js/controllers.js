@@ -168,7 +168,7 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, userServic
     $scope.initialForm();
 })// End of share social bottom sheet controller.
 
-.controller('siteListCtrl', function ($scope, $location, $http) {
+.controller('siteListCtrl', function ($scope, $location, $http, userService) {
     $scope.items = [];
 
     $http.get(window.globalVariable.apiDomain + '/api/site').success(function (result) {
@@ -178,20 +178,20 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, userServic
     $scope.addCollect = function(item, $event){
         $event.stopPropagation();
 
-        $http.post(window.globalVariable.apiDomain + '/api/site/add-collect', {id: item.id}).success(function(result){
-            if(result.status == 1){
-                item.isCollect = 1;
-            }
+        userService.addCollect(item.id).then(function(){
+            item.isCollect = 1;
+        }, function(msg){
+            alert(msg);
         });
     };
 
     $scope.deleteCollect = function(item, $event){
         $event.stopPropagation();
 
-        $http.post(window.globalVariable.apiDomain + '/api/site/delete-collect', {id: item.id}).success(function(result){
-            if(result.status == 1){
-                item.isCollect = 0;
-            }
+        userService.deleteCollect(item.id).then(function(){
+            item.isCollect = 0;
+        }, function(msg){
+            alert(msg);
         });
     };
 

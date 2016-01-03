@@ -95,5 +95,47 @@ appServices.service('userService', function($q, $http){
         });
 
         return deferred.promise;
+    };
+
+    /**
+     *
+     * @param id
+     * @returns {deferred.promise|{then, catch, finally}}
+     */
+    this.addCollect = function(id){
+        var deferred = $q.defer();
+
+        $http.post(window.globalVariable.apiDomain + '/api/site/add-collect', {id: id, uid: this.userInfo.uid}).success(function(result){
+            if(result.status == 1){
+                deferred.resolve();
+            }else{
+                deferred.reject(result.msg);
+            }
+        }).error(function(){
+            deferred.reject('收藏失败');
+        });
+
+        return deferred.promise;
+    };
+
+    /**
+     *
+     * @param id
+     * @returns {deferred.promise|{then, catch, finally}}
+     */
+    this.deleteCollect = function(id){
+        var deferred = $q.defer();
+
+        $http.post(window.globalVariable.apiDomain + '/api/site/delete-collect', {id: id}).success(function(result){
+            if(result.status == 1){
+                deferred.resolve();
+            }else{
+                deferred.reject(result.msg);
+            }
+        }).error(function(){
+            deferred.reject('删除收藏失败');
+        });
+
+        return deferred.promise;
     }
 });
