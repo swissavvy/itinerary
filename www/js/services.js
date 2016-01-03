@@ -31,5 +31,69 @@ appServices.service('userService', function($q, $http){
         });
 
         return deferred.promise;
+    };
+
+    /**
+     * 登录
+     * @param username
+     * @param password
+     * @returns {deferred.promise|{then, catch, finally}}
+     */
+    this.login = function(username, password){
+        var deferred = $q.defer();
+        var userService = this;
+
+        var params = {
+            identity: username,
+            password: password
+        };
+
+        $http.post(window.globalVariable.apiDomain + '/api/user/login', params).success(function(result){
+            if(result.status == 1){
+                userService.setUserInfo(result.data[0]);
+                deferred.resolve(this.userInfo);
+            }else{
+                deferred.reject(result.msg);
+            }
+        }).error(function(){
+            deferred.reject('登录失败');
+        });
+
+        return deferred.promise;
+    };
+
+    /**
+     *
+     * @param username
+     * @param password
+     * @param email
+     * @returns {deferred.promise|{then, catch, finally}}
+     */
+    this.register = function(username, password, email){
+        var deferred = $q.defer();
+        var userService = this;
+
+        /**
+         *
+         * @type {{username: *, password: *, email: *}}
+         */
+        var params = {
+            username: username,
+            password: password,
+            email: email
+        };
+
+        $http.post(window.globalVariable.apiDomain + '/api/user/register', params).success(function(result){
+            if(result.status == 1){
+                userService.setUserInfo(result.data[0]);
+                deferred.resolve(this.userInfo);
+            }else{
+                deferred.reject(result.msg);
+            }
+        }).error(function(){
+            deferred.reject('注册失败');
+        });
+
+        return deferred.promise;
     }
 });

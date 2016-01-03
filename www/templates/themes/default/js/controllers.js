@@ -12,16 +12,15 @@ appControllers.controller('loginCtrl', function ($scope, $location, $http, userS
             identity: $scope.loginForm.username,
             password: $scope.loginForm.password
         };
-        $http.post(window.globalVariable.apiDomain + '/api/user/login', params).success(function(result){
-            if(result.status == 1){
-                userService.setUserInfo(result.data[0]);
-                console.log(userService.userInfo);
-                $scope.navigateTo('app.siteList');
-            }
+
+        userService.login($scope.loginForm.username, $scope.loginForm.password).then(function(user){
+            $scope.navigateTo('app.siteList');
+        }, function(msg){
+            alert(msg);
         });
     };
 })
-.controller('signUpCtrl', function ($scope, $location, $http) {
+.controller('signUpCtrl', function ($scope, $location, userService) {
     $scope.signUpForm = {
         username: "",
         password: "",
@@ -30,11 +29,10 @@ appControllers.controller('loginCtrl', function ($scope, $location, $http, userS
     };
 
     $scope.signUp = function () {
-        var params = {};
-        $http.post(window.globalVariable.apiDomain + '/api/user/register', params).success(function(){
-
+        userService.register($scope.signUpForm.username, $scope.signUpForm.password, $scope.signUpForm.email).then(function(){
+            $scope.navigateTo('app.siteList');
+        }, function(msg){
+            alert(msg);
         });
-
-        $scope.navigateTo('app.siteList');
     };
-})
+});
