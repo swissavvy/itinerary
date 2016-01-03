@@ -22,7 +22,7 @@
 
                 </div>
                 <div class="location-content row">
-                    <div class="col-90">
+                    <div class="col-80">
                         <h1>
                             {{item.title}}
                         </h1>
@@ -31,7 +31,7 @@
                             <i class="fa fa-flag"></i> {{item.position}}
                         </p>
                     </div>
-                    <div class="col-10">
+                    <div class="col-20">
                         <span class="text-add" ng-if="item.isCollect == 1" ng-click="deleteCollect(item, $event)">Added to trip</span>
                         <span class="text-add" ng-if="item.isCollect == 0" ng-click="addCollect(item, $event)">Add to trip</span>
                     </div>
