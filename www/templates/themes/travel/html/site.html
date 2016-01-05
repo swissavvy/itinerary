@@ -70,20 +70,20 @@
                     Maps
                 </div>
                 <div class="content">
-                    <map center="{{center_position.lat}},{{center_position.lng}}" zoom="15">
+                    <map center="{{site.coordinates}}" zoom="15">
                         <marker
-                                position="{{site.position}}"
-                                title="{{site.title}}"
-                                visible="true">
+                            position="{{site.coordinates}}"
+                            title="{{site.title}}"
+                            visible="true">
                         </marker>
 
-                        <info-window id="{{site.id}}" position="{{site.position}}" visible="true">
+                        <info-window id="{{site.id}}" position="{{site.coordinates}}" visible="true">
                             <div ng-non-bindable="">
                                 <b>{{site.title}}</b><br>
                                 {{site.description}}<br>
-                                <img style=" border-radius: 24px;" src="http://lorempixel.com/50/50/food/?v=1">
-                                <img style=" border-radius: 24px;" src="http://lorempixel.com/50/50/food/?v=2">
-                                <img style=" border-radius: 24px;" src="http://lorempixel.com/50/50/food/?v=3">
+                                <!--<img style=" border-radius: 24px;" src="http://lorempixel.com/50/50/food/?v=1">-->
+                                <!--<img style=" border-radius: 24px;" src="http://lorempixel.com/50/50/food/?v=2">-->
+                                <!--<img style=" border-radius: 24px;" src="http://lorempixel.com/50/50/food/?v=3">-->
                             </div>
                         </info-window>
                     </map>
