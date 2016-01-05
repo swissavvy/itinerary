@@ -138,4 +138,26 @@ appServices.service('userService', function($q, $http){
 
         return deferred.promise;
     }
+})
+
+.service('attractionService', function($q, $http){
+    /**
+     * 获取景点列表
+     * @returns {deferred.promise|{then, catch, finally}}
+     */
+    this.getAttractions = function(){
+        var deferred = $q.defer();
+
+        $http.get(window.globalVariable.apiDomain + '/api/site').success(function (result) {
+            if(result.status == 1){
+                deferred.resolve(result.data);
+            }else{
+                deferred.reject(result.msg);
+            }
+        }).error(function(){
+            deferred.reject('列表数据获取失败');
+        });
+
+        return deferred.promise;
+    }
 });

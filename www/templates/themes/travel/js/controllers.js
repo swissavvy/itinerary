@@ -168,11 +168,13 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, userServic
     $scope.initialForm();
 })// End of share social bottom sheet controller.
 
-.controller('siteListCtrl', function ($scope, $location, $http, userService) {
+.controller('siteListCtrl', function ($scope, $location, userService, attractionService) {
     $scope.items = [];
 
-    $http.get(window.globalVariable.apiDomain + '/api/site').success(function (result) {
-        $scope.items = result.data;
+    attractionService.getAttractions().then(function(result){
+        $scope.items = result;
+    }, function(msg){
+        console.log(msg);
     });
 
     $scope.addCollect = function(item, $event){
