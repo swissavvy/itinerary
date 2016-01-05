@@ -2414,6 +2414,8 @@ md-sidenav {
       .location-img {
         height: 110px;
         background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         border-top-right-radius: 2px;
         border-top-left-radius: 2px;
       }
