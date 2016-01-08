@@ -107,7 +107,7 @@ appServices.service('userService', function($q, $http){
 
         $http.post(window.globalVariable.apiDomain + '/api/site/add-collect', {id: id, uid: this.userInfo.uid}).success(function(result){
             if(result.status == 1){
-                deferred.resolve();
+                deferred.resolve(result.data);
             }else{
                 deferred.reject(result.msg);
             }
@@ -126,7 +126,7 @@ appServices.service('userService', function($q, $http){
     this.deleteCollect = function(id){
         var deferred = $q.defer();
 
-        $http.post(window.globalVariable.apiDomain + '/api/site/delete-collect', {id: id}).success(function(result){
+        $http.get(window.globalVariable.apiDomain + '/api/site/delete-collect', {params: {id: id}}).success(function(result){
             if(result.status == 1){
                 deferred.resolve();
             }else{
