@@ -27,7 +27,7 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, userServic
     $scope.items = items;
 })
 
-.controller('siteCtrl', function ($scope, $stateParams, $filter, $http, $mdBottomSheet) {
+.controller('siteCtrl', function ($scope, $stateParams, $filter, $http, $mdBottomSheet, $sce) {
     var id = $stateParams.id;
     $http.get(window.globalVariable.apiDomain + '/api/site/view', {params: {id: id}}).success(function (result) {
         $scope.site = result.data;
@@ -50,6 +50,10 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, userServic
             }
         });
     };// End sharedProduct.
+
+    $scope.trustSrc = function(src) {
+        return $sce.trustAsResourceUrl(src);
+    }
 })
 
 // Controller of share social bottom sheet.

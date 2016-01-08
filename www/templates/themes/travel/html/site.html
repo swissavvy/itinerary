@@ -39,7 +39,7 @@
         </md-toolbar> <!--end toolbar section-->
         <div class="course-list">
             <div class="course-item">
-                <audio src="{{site.audioUrl}}" controls="controls" class="audio"></audio>
+                <audio ng-src="{{trustSrc(site.audioUrl)}}" controls="controls" class="audio"></audio>
             </div>
 
             <!--content item section-->
