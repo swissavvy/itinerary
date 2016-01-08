@@ -50,10 +50,6 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, userServic
             }
         });
     };// End sharedProduct.
-
-    $scope.trustSrc = function(src) {
-        return $sce.trustAsResourceUrl(src);
-    }
 })
 
 // Controller of share social bottom sheet.
