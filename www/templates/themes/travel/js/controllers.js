@@ -50,6 +50,20 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, userServic
             }
         });
     };// End sharedProduct.
+
+    $scope.startMp3 = function(){
+        var oAudio = document.getElementById('audio');
+        var iconMp3 = document.getElementById('btn-mp3-icon');
+        // Tests the paused attribute and set state.
+        if (oAudio.paused) {
+            oAudio.play();
+            iconMp3.className = 'ion-close-round';
+        }
+        else {
+            oAudio.pause();
+            iconMp3.className = 'ion-arrow-right-b';
+        }
+    }
 })
 
 // Controller of share social bottom sheet.
