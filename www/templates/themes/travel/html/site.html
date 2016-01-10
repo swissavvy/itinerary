@@ -48,7 +48,7 @@
                     Information
                 </div>
                 <div class="content">
-                    <p>{{site.description}}</p>
+                    <p ng-repeat="attribute in site.attributes" style="margin: 0">{{attribute.name}}&nbsp;:&nbsp;{{attribute.value}}</p>
                 </div>
             </div>
             <!--end content item section-->
