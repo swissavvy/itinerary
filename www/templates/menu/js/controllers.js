@@ -1,7 +1,7 @@
 // Controller of menu toggle.
 // Learn more about Sidenav directive of angular material
 // https://material.angularjs.org/latest/#/demo/material.components.sidenav
-appControllers.controller('menuCtrl', function ($scope, $timeout, $mdUtil, $mdSidenav, $log, $ionicHistory, $state, $http, categoryService) {
+appControllers.controller('menuCtrl', function ($scope, $timeout, $mdUtil, $mdSidenav, $log, $ionicHistory, $state, userService, categoryService) {
 
     $scope.toggleLeft = buildToggler('left');
     // buildToggler is for create menu toggle.
@@ -14,9 +14,9 @@ appControllers.controller('menuCtrl', function ($scope, $timeout, $mdUtil, $mdSi
         return debounceFn;
     };// End buildToggler.
 
-    // navigateTo is for navigate to other page 
-    // by using targetPage to be the destination state. 
-    // Parameter :  
+    // navigateTo is for navigate to other page
+    // by using targetPage to be the destination state.
+    // Parameter :
     // stateNames = target state to go
     $scope.navigateTo = function (stateName, params) {
         $timeout(function () {
@@ -29,13 +29,7 @@ appControllers.controller('menuCtrl', function ($scope, $timeout, $mdUtil, $mdSi
         }, 200);
     };// End navigateTo.
 
-    $scope.user = {};
-    $scope.menus = {};
-
-    $http.get('app-data/user.json')
-        .success(function (data) {
-            $scope.user = data;
-        });
+    $scope.user = userService.userInfo;
 
     categoryService.getCategories(0).then(function (result) {
         $scope.categories = result;

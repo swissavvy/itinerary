@@ -4,9 +4,9 @@
 appServices.service('userService', function($q, $http){
     /**
      *
-     * @type {{uid: int, username: string, avatar: string, email: string}}
+     * @type {{uid: int, username: string, avatar: string, email: string}| null}
      */
-    this.userInfo = {};
+    this.userInfo = null;
 
     this.setUserInfo = function(data){
         this.userInfo.uid = data.id;
@@ -147,12 +147,14 @@ appServices.service('userService', function($q, $http){
      */
     this.getAttractions = function(categoryId){
         var deferred = $q.defer();
-        var params = {
-            uid: userService.userInfo.uid
-        };
+        var params = {};
 
         if(categoryId != 0){
             params.category_id = categoryId;
+        }
+
+        if(userService.userInfo){
+            params.uid = userService.userInfo.uid;
         }
 
         $http.get(window.globalVariable.apiDomain + '/api/site/index', {params: params}).success(function (result) {
