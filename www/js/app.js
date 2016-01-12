@@ -368,7 +368,7 @@ angular.module('starter', ['ionic','ionic.service.core','ngIOS9UIWebViewPatch', 
                 }
             })
             .state('app.siteList', {
-                url: "/siteList",
+                url: "/siteList/:categoryId",
                 views: {
                     'menuContent': {
                         templateUrl: "templates/themes/travel/html/siteList.html",

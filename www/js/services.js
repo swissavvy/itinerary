@@ -140,15 +140,47 @@ appServices.service('userService', function($q, $http){
     }
 })
 
-.service('attractionService', function($q, $http){
+.service('attractionService', function($q, $http, userService){
     /**
      * 获取景点列表
      * @returns {deferred.promise|{then, catch, finally}}
      */
-    this.getAttractions = function(){
+    this.getAttractions = function(categoryId){
+        var deferred = $q.defer();
+        var params = {
+            uid: userService.userInfo.uid
+        };
+
+        if(categoryId != 0){
+            params.category_id = categoryId;
+        }
+
+        $http.get(window.globalVariable.apiDomain + '/api/site/index', {params: params}).success(function (result) {
+            if(result.status == 1){
+                deferred.resolve(result.data);
+            }else{
+                deferred.reject(result.msg);
+            }
+        }).error(function(){
+            deferred.reject('列表数据获取失败');
+        });
+
+        return deferred.promise;
+    }
+})
+
+.service('categoryService', function($http, $q){
+    var moduleId = 'sub-site';
+
+    /**
+     * 获取分类
+     * @param parentId
+     * @returns {deferred.promise|{then, catch, finally}}
+     */
+    this.getCategories = function(parentId){
         var deferred = $q.defer();
 
-        $http.get(window.globalVariable.apiDomain + '/api/site').success(function (result) {
+        $http.get(window.globalVariable.apiDomain + '/api/category/index', {params: {category_id: parentId, module: moduleId}}).success(function (result) {
             if(result.status == 1){
                 deferred.resolve(result.data);
             }else{

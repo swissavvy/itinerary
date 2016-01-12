@@ -46,9 +46,14 @@
 
                 <md-subheader class="assertive">Category</md-subheader>
 
-                <md-list-item class="menu-list-item" ng-click="navigateTo('app.siteList')">
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.siteList', {categoryId: 0})">
                     <i class="ion-home"></i>
-                    <span>All</span>
+                    <span>All Category</span>
+                </md-list-item>
+
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.siteList', {categoryId: category.id})" ng-repeat="category in categories">
+                    <i class="ion-home"></i>
+                    <span>{{category.Name}}</span>
                 </md-list-item>
 
                 <md-subheader class="assertive">User</md-subheader>
