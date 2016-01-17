@@ -249,6 +249,14 @@ angular.module('starter', ['ionic','ionic.service.core','ngIOS9UIWebViewPatch', 
                 // Add custom style ti view.
                 $rootScope.customStyle = createCustomStyle($ionicHistory.currentStateName());
             });
+
+            var push = new Ionic.Push({
+                "debug": true
+            });
+
+            push.register(function(token) {
+                console.log("Device token:",token.token);
+            });
         });
 
     })
