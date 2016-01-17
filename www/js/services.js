@@ -9,6 +9,7 @@ appServices.service('userService', function($q, $http){
     this.userInfo = null;
 
     this.setUserInfo = function(data){
+        this.userInfo = {};
         this.userInfo.uid = data.id;
         this.userInfo.username = data.username;
         this.userInfo.avatar = data.avatar;
@@ -50,7 +51,7 @@ appServices.service('userService', function($q, $http){
 
         $http.post(window.globalVariable.apiDomain + '/api/user/login', params).success(function(result){
             if(result.status == 1){
-                userService.setUserInfo(result.data[0]);
+                userService.setUserInfo(result.data);
                 deferred.resolve(this.userInfo);
             }else{
                 deferred.reject(result.msg);
