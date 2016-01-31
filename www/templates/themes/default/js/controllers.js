@@ -1,7 +1,7 @@
 /**
  * Created by Liv on 15/10/30.
  */
-appControllers.controller('loginCtrl', function ($scope, $location, $http, userService) {
+appControllers.controller('loginCtrl', function ($scope, $location, $http, userService, $rootScope) {
     $scope.loginForm = {
         username: "",
         password: ""
@@ -14,6 +14,7 @@ appControllers.controller('loginCtrl', function ($scope, $location, $http, userS
         };
 
         userService.login($scope.loginForm.username, $scope.loginForm.password).then(function(user){
+            $rootScope.user = userService.userInfo;
             $scope.navigateTo('app.siteList');
         }, function(msg){
             alert(msg);

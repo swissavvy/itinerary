@@ -29,8 +29,6 @@ appControllers.controller('menuCtrl', function ($scope, $timeout, $mdUtil, $mdSi
         }, 200);
     };// End navigateTo.
 
-    $scope.user = userService.userInfo;
-
     categoryService.getCategories(0).then(function (result) {
         $scope.categories = result;
     })
