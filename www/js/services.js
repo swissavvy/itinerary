@@ -12,7 +12,7 @@ appServices.service('userService', function($q, $http){
         this.userInfo = {};
         this.userInfo.uid = data.id;
         this.userInfo.username = data.username;
-        this.userInfo.avatar = data.avatar;
+        this.userInfo.avatar = data.userProfile.avatar_base_url + data.userProfile.avatar_path;
         this.userInfo.email = data.email;
     };
 
@@ -148,7 +148,10 @@ appServices.service('userService', function($q, $http){
      */
     this.getAttractions = function(categoryId){
         var deferred = $q.defer();
-        var params = {};
+        var params = {
+            lng:0,
+            lat:0
+        };
 
         if(categoryId != 0){
             params.category_id = categoryId;

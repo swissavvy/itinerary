@@ -205,7 +205,7 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, userServic
     $scope.deleteCollect = function(item, $event){
         $event.stopPropagation();
 
-        userService.deleteCollect(item.collect_id).then(function(){
+        userService.deleteCollect(item.id).then(function(){
             item.isCollect = 0;
         }, function(msg){
             alert(msg);
