@@ -12,7 +12,7 @@ appServices.service('userService', function($q, $http){
         this.userInfo = {};
         this.userInfo.uid = data.id;
         this.userInfo.username = data.username;
-        this.userInfo.avatar = data.userProfile.avatar_base_url + data.userProfile.avatar_path;
+        this.userInfo.avatar = data.avatar_base_url + data.avatar_path;
         this.userInfo.email = data.email;
     };
 
@@ -86,7 +86,7 @@ appServices.service('userService', function($q, $http){
 
         $http.post(window.globalVariable.apiDomain + '/api/user/register', params).success(function(result){
             if(result.status == 1){
-                userService.setUserInfo(result.data[0]);
+                userService.setUserInfo(result.data);
                 deferred.resolve(this.userInfo);
             }else{
                 deferred.reject(result.msg);
