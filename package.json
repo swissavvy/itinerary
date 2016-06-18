@@ -18,7 +18,12 @@
     "shelljs": "^0.3.0"
   },
   "cordovaPlugins": [
-    "phonegap-plugin-push"
+    "cordova-plugin-device",
+    "cordova-plugin-console",
+    "cordova-plugin-whitelist",
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-statusbar",
+    "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": []
 }
