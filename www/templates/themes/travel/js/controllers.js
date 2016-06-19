@@ -253,4 +253,6 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, userServic
             $ionicLoading.hide();
         });
     };
+
+    $scope.centerOnMe();
 });
