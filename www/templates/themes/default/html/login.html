@@ -3,7 +3,7 @@
 <!--State name : app.fakeLogin-->
 <!--URL : #app/fakeLogin-->
 
-<ion-view title="Sign In">
+<ion-view title="登陆">
     <!--left button on navigation bar-->
     <ion-nav-buttons side="left">
         <a ng-click="$ionicGoBack()" class="button back-button buttons button-clear header-item nav-back-btn">
@@ -18,20 +18,20 @@
             <div>
                 <img src="img/app_icon.png"/>
             </div>
-            <div class="sub-header">Sign in to application</div>
+            <div class="sub-header">登录应用</div>
 
             <div id="fakeLogin">
                 <md-input-container md-no-float="">
-                    <input class="user-name" placeholder="Username" ng-model="loginForm.username">
+                    <input class="user-name" placeholder="用户名" ng-model="loginForm.username">
                 </md-input-container>
                 <hr/>
                 <md-input-container md-no-float="">
-                    <input class="user-password" type="password" placeholder="Password" ng-model="loginForm.password">
+                    <input class="user-password" type="密码" placeholder="Password" ng-model="loginForm.password">
                 </md-input-container>
             </div>
             <div>
                 <a class="md-raised social-button md-button md-default-theme material-background" ng-click="login()">
-                    Sign In
+                    登录
                 </a>
             </div>
         </form> <!--end fake login form section-->

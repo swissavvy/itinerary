@@ -32,23 +32,23 @@
         <ion-content id="toggle-menu-left-content">
             <!--list section-->
             <md-list>
-                <md-subheader class="assertive">My Tour</md-subheader>
+                <md-subheader class="assertive">我的行程</md-subheader>
 
                 <md-list-item class="menu-list-item" ng-click="navigateTo('app.siteList')">
                     <i class="ion-home"></i>
-                    <span>All spots</span>
+                    <span>所有行程</span>
                 </md-list-item>
 
                 <md-list-item class="menu-list-item" ng-click="navigateTo('app.myBooking')">
                     <i class="ion-star"></i>
-                    <span>Favorite</span>
+                    <span>收藏行程</span>
                 </md-list-item>
 
-                <md-subheader class="assertive">Category</md-subheader>
+                <md-subheader class="assertive">景点分类</md-subheader>
 
                 <md-list-item class="menu-list-item" ng-click="navigateTo('app.siteList', {categoryId: 0})">
                     <i class="ion-home"></i>
-                    <span>All Category</span>
+                    <span>所有分类</span>
                 </md-list-item>
 
                 <md-list-item class="menu-list-item" ng-click="navigateTo('app.siteList', {categoryId: category.id})" ng-repeat="category in categories">
@@ -56,11 +56,11 @@
                     <span>{{category.Name}}</span>
                 </md-list-item>
 
-                <md-subheader class="assertive">User</md-subheader>
+                <md-subheader class="assertive">用户中心</md-subheader>
 
                 <md-list-item class="menu-list-item" ng-click="navigateTo('app.index')">
                     <i class="ion-home"></i>
-                    <span>Logout</span>
+                    <span>退出登录</span>
                 </md-list-item>
             </md-list><!--end list section-->
         </ion-content><!--end menu content section-->

@@ -3,7 +3,7 @@
 <!--State name : app.locationFeed-->
 <!--URL : #app/locationFeed-->
 
-<ion-view title="Attractions">
+<ion-view title="景点导览">
     <!--left button on navigation bar-->
     <ion-nav-buttons side="right">
         <a href="#/app/maps" class="button back-button buttons button-clear header-item nav-back-btn">
@@ -32,8 +32,8 @@
                         </p>
                     </div>
                     <div class="col-20">
-                        <span class="text-add" ng-if="item.isCollect == 1" ng-click="deleteCollect(item, $event)">Added to trip</span>
-                        <span class="text-add" ng-if="item.isCollect == 0" ng-click="addCollect(item, $event)">Add to trip</span>
+                        <span class="text-add" ng-if="item.isCollect == 1" ng-click="deleteCollect(item, $event)">已收藏</span>
+                        <span class="text-add" ng-if="item.isCollect == 0" ng-click="addCollect(item, $event)">收藏</span>
                     </div>
                 </div>
             </div><!--end location item section-->

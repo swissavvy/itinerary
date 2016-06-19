@@ -3,7 +3,7 @@
 <!--State name : app.fakeSignUp-->
 <!--URL : #app/fakeSignUp-->
 
-<ion-view title="Material Design">
+<ion-view title="注册用户">
     <!--left button on navigation bar-->
     <ion-nav-buttons side="left">
         <a ng-click="$ionicGoBack()" class="button back-button buttons button-clear header-item nav-back-btn">
@@ -19,30 +19,30 @@
         <!--input section-->
         <md-input-container md-no-float="">
             <div>
-                <input class="user-name" placeholder="Username" ng-model="signUpForm.username">
+                <input class="user-name" placeholder="用户名" ng-model="signUpForm.username">
             </div>
         </md-input-container>
         <md-input-container md-no-float="">
             <div>
-                <input type="password" class="user-name" placeholder="Password" ng-model="signUpForm.password">
+                <input type="password" class="user-name" placeholder="密码" ng-model="signUpForm.password">
             </div>
         </md-input-container>
         <md-input-container md-no-float="">
             <div>
-                <input type="password" class="user-name" placeholder="Confirm Password" ng-model="signUpForm.confirmPassword">
+                <input type="password" class="user-name" placeholder="再次输入密码" ng-model="signUpForm.confirmPassword">
             </div>
         </md-input-container>
         <md-input-container md-no-float="">
             <div>
-                <input class="user-name" placeholder="Mail" ng-model="signUpForm.email">
+                <input class="user-name" placeholder="邮箱" ng-model="signUpForm.email">
             </div>
         </md-input-container>
         <md-checkbox aria-label="CheckboxTerms">
-            I accept terms and conditions.
+            我同意ATG注册条款.
         </md-checkbox>
         <!--end input section-->
         <a class="md-raised social-button md-button md-default-theme material-background" ng-click="signUp()">
-            Sign Up
+            注册
         </a>
 
     </ion-content><!--end social sign up section-->
