@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.ionicmaterialdesign506749" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>IonicMaterialDesign</name>
+  <name>ATG Tour Guide</name>
   <description>
-        An Ionic Framework and Cordova project.
+    ATG Tour Guide.
   </description>
-  <author email="ionicmaterialdesign@gmail.com" href="http://ionicframework.com/">
-      Ionic Framework Team
+  <author email="523260513@qq.com" href="http://blog.liv1020.com/">
+      Pavle Lee
     </author>
   <content src="index.html"/>
   <access origin="*"/>
