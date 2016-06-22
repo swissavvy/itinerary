@@ -18,7 +18,7 @@
         <!--menu section-->
         <div class="material-background" id="toggle-menu-left-header">
             <!--menu header section-->
-            <div class="menu-left-header">
+            <div class="menu-left-header" ng-show="user">
                 <img class="user-img" src="{{user.avatar}}">
 
                 <p>
@@ -26,6 +26,11 @@
                     <br/>
                     <span class="sub-title">{{user.email}}</span>
                 </p>
+            </div><!--end menu header section-->
+
+            <div class="menu-left-header" ng-show="!user">
+                <img class="user-img" src="{{user.avatar}}">
+
             </div><!--end menu header section-->
         </div>
         <!--menu content section-->
@@ -56,9 +61,9 @@
                     <span>{{category.Name}}</span>
                 </md-list-item>
 
-                <md-subheader class="assertive">用户中心</md-subheader>
+                <md-subheader class="assertive" ng-show="user">用户中心</md-subheader>
 
-                <md-list-item class="menu-list-item" ng-click="navigateTo('app.index')">
+                <md-list-item class="menu-list-item" ng-click="logout()" ng-show="user">
                     <i class="ion-home"></i>
                     <span>退出登录</span>
                 </md-list-item>

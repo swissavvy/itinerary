@@ -22,8 +22,8 @@ window.globalVariable = {
         wordpressColor: "#0087BE"
     },// End custom color style variable
     startPage: {
-        url: "/app/index", //Url of start page.
-        state: "app.index"//State name of start page.
+        url: "/app/siteList/", //Url of start page.
+        state: "app.siteList"//State name of start page.
     },
     message: {
         errorMessage: "Technical error please try again later." //Default error message.
@@ -41,7 +41,7 @@ window.globalVariable = {
 
 
 angular.module('starter', ['ionic','ionic.service.core','ngIOS9UIWebViewPatch', 'starter.controllers', 'starter.services', 'ngMaterial', 'ngMessages', 'ngCordova'])
-    .run(function ($ionicPlatform, $cordovaSQLite, $rootScope, $ionicHistory, $state, $mdDialog, $mdBottomSheet) {
+    .run(function ($ionicPlatform, $cordovaSQLite, $rootScope, $ionicHistory, $state, $mdDialog, $mdBottomSheet, userService) {
 
         //Create database table of contracts by using sqlite database.
         //Table schema :
@@ -259,6 +259,16 @@ angular.module('starter', ['ionic','ionic.service.core','ngIOS9UIWebViewPatch', 
             });
         });
 
+        userService.loadUserInfo();
+        $rootScope.user = userService.userInfo;
+
+        var noLogin = ["app.index","app.login","app.signUp"];
+        $rootScope.$on('$stateChangeStart',function(event, toState){
+            if (!(noLogin.indexOf(toState.name)>=0) && !$rootScope.user) {
+                $state.go("app.index");
+                event.preventDefault();
+            }
+        })
     })
 
     .config(function ($ionicConfigProvider, $stateProvider, $urlRouterProvider, $mdThemingProvider, $mdIconProvider, $mdColorPalette, $mdIconProvider) {

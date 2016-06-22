@@ -1,7 +1,7 @@
 // Controller of menu toggle.
 // Learn more about Sidenav directive of angular material
 // https://material.angularjs.org/latest/#/demo/material.components.sidenav
-appControllers.controller('menuCtrl', function ($scope, $timeout, $mdUtil, $mdSidenav, $log, $ionicHistory, $state, userService, categoryService) {
+appControllers.controller('menuCtrl', function ($scope, $timeout, $mdUtil, $mdSidenav, $log, $ionicHistory, $state, userService, categoryService, $rootScope) {
 
     $scope.toggleLeft = buildToggler('left');
     // buildToggler is for create menu toggle.
@@ -31,6 +31,11 @@ appControllers.controller('menuCtrl', function ($scope, $timeout, $mdUtil, $mdSi
 
     categoryService.getCategories(0).then(function (result) {
         $scope.categories = result;
-    })
+    });
 
+    $scope.logout = function () {
+        userService.logout();
+        $rootScope.user = null;
+        $scope.navigateTo('app.index');
+    }
 }); // End of menu toggle controller.
