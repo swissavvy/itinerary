@@ -239,7 +239,7 @@ angular.module('starter', ['ionic','ionic.service.core','ngIOS9UIWebViewPatch', 
                 StatusBar.styleDefault();
             }
 
-            initialSQLite();
+            //initialSQLite();
             initialRootScope();
 
             //Checking if view is changing it will go to this function.
@@ -405,6 +405,8 @@ angular.module('starter', ['ionic','ionic.service.core','ngIOS9UIWebViewPatch', 
             });
 
         //Use $urlRouterProvider.otherwise(Url);
-        $urlRouterProvider.otherwise(window.globalVariable.startPage.url);
-
+        $urlRouterProvider.otherwise(function($injector, $location) {
+            var $state = $injector.get("$state");
+            $state.go(window.globalVariable.startPage.state);
+        });
     });

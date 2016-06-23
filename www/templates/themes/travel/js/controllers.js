@@ -63,6 +63,22 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, userServic
             oAudio.pause();
             iconMp3.className = 'ion-arrow-right-b';
         }
+    };
+
+  /**
+   * 打开地图
+   * @param targetDestinationLocation
+   */
+  $scope.openMap = function (targetDestinationLocation) {
+        if(ionic.Platform.isAndroid()){
+            //android
+            window.open('geo:?q=' + targetDestinationLocation + '&z=15', '_system');
+
+        }else{
+            //ios
+            window.open('comgooglemaps://?q=' + targetDestinationLocation + '&zoom=15', '_system');
+            //window.open('maps://?q=' + targetDestinationLocation, '_system');
+        }
     }
 })
 
