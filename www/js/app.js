@@ -41,7 +41,7 @@ window.globalVariable = {
 
 
 angular.module('starter', ['ionic','ionic.service.core','ngIOS9UIWebViewPatch', 'starter.controllers', 'starter.services', 'ngMaterial', 'ngMessages', 'ngCordova'])
-    .run(function ($ionicPlatform, $cordovaSQLite, $rootScope, $ionicHistory, $state, $mdDialog, $mdBottomSheet, userService) {
+    .run(function ($ionicPlatform, $cordovaSQLite, $rootScope, $ionicHistory, $state, $mdDialog, $mdBottomSheet, userService, $ionicLoading) {
 
         //Create database table of contracts by using sqlite database.
         //Table schema :
@@ -258,6 +258,27 @@ angular.module('starter', ['ionic','ionic.service.core','ngIOS9UIWebViewPatch', 
                 console.log("Device token:",token.token);
             });
         });
+
+        /**
+         * 显示信息
+         * @param text
+         */
+        $rootScope.show = function(text) {
+            $rootScope.loading = $ionicLoading.show({
+                template: text ? text : 'Loading...',
+                animation: 'fade-in',
+                showBackdrop: true,
+                maxWidth: 500,
+                showDelay: 0
+            });
+        };
+
+        /**
+         * 隐藏信息
+         */
+        $rootScope.hide = function() {
+            $ionicLoading.hide();
+        };
 
         userService.loadUserInfo();
         $rootScope.user = userService.userInfo;

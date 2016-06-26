@@ -8,20 +8,18 @@ appControllers.controller('loginCtrl', function ($scope, $location, $http, userS
     };
 
     $scope.login = function () {
-        var params = {
-            identity: $scope.loginForm.username,
-            password: $scope.loginForm.password
-        };
-
+        $rootScope.show('正在登录');
         userService.login($scope.loginForm.username, $scope.loginForm.password).then(function(user){
+            $rootScope.hide();
             $rootScope.user = userService.userInfo;
             $scope.navigateTo('app.siteList');
         }, function(msg){
+            $rootScope.hide();
             alert(msg);
         });
     };
 })
-.controller('signUpCtrl', function ($scope, $location, userService) {
+.controller('signUpCtrl', function ($scope, $location, userService, $rootScope) {
     $scope.signUpForm = {
         username: "",
         password: "",
@@ -30,7 +28,10 @@ appControllers.controller('loginCtrl', function ($scope, $location, $http, userS
     };
 
     $scope.signUp = function () {
+        $rootScope.show('正在注册');
         userService.register($scope.signUpForm.username, $scope.signUpForm.password, $scope.signUpForm.email).then(function(){
+            $rootScope.hide();
+            $rootScope.user = userService.userInfo;
             $scope.navigateTo('app.siteList');
         }, function(msg){
             alert(msg);
