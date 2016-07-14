@@ -19,7 +19,7 @@
         <!--list section-->
         <div class="location-list">
             <!--location item section-->
-            <div class="location-item" ng-repeat="item in items">
+            <a class="location-item" ng-repeat="item in items" ng-click="redirect('/app/viewSite/{{item.id}}')">
                 <div class="location-content row">
                     <div class="col-90">
                         <h1>{{item.title}}</h1>
@@ -29,7 +29,7 @@
                         </p>
                     </div>
                 </div>
-            </div><!--end location item section-->
+            </a><!--end location item section-->
         </div>
         <!--end list section-->
 

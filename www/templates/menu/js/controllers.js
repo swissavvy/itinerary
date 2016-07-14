@@ -1,7 +1,7 @@
 // Controller of menu toggle.
 // Learn more about Sidenav directive of angular material
 // https://material.angularjs.org/latest/#/demo/material.components.sidenav
-appControllers.controller('menuCtrl', function ($scope, $timeout, $mdUtil, $mdSidenav, $log, $ionicHistory, $state, userService, categoryService, $rootScope) {
+appControllers.controller('menuCtrl', function ($scope, $timeout, $mdUtil, $mdSidenav, $log, $ionicHistory, $state, userService, categoryService, $rootScope, $cordovaInAppBrowser) {
 
     $scope.toggleLeft = buildToggler('left');
     // buildToggler is for create menu toggle.
@@ -37,5 +37,15 @@ appControllers.controller('menuCtrl', function ($scope, $timeout, $mdUtil, $mdSi
         userService.logout();
         $rootScope.user = null;
         $scope.navigateTo('app.index');
+    }
+
+    $scope.openBrower = function () {
+      $cordovaInAppBrowser.open('http://baidu.com', '_blank')
+        .then(function(event) {
+          // success
+        })
+        .catch(function(event) {
+          // error
+        });
     }
 }); // End of menu toggle controller.

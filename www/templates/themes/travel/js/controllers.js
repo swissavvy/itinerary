@@ -1,7 +1,7 @@
 /**
  * Created by Liv on 15/10/18.
  */
-appControllers.controller('myBookingCtrl', function ($scope, $filter, userService) {
+appControllers.controller('myBookingCtrl', function ($scope, $filter, userService, $location) {
 
     var TYPE_ALL = 0;
     var TYPE_HOTELS = 1;
@@ -12,6 +12,7 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, userServic
     userService.getCollects().then(function(list){
         items = list;
         $scope.items = items;
+      console.log(items);
     }, function(msg){
         console.log(msg);
     });
@@ -25,6 +26,10 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, userServic
     };
 
     $scope.items = items;
+
+    $scope.redirect = function (url) {
+      $location.path(url)
+    };
 })
 
 .controller('siteCtrl', function ($scope, $stateParams, $filter, $http, $mdBottomSheet, $sce) {
@@ -233,42 +238,43 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, userServic
     };
 })
 
-.controller('MapsCtrl', function($scope, $ionicLoading) {
+.controller('MapsCtrl', function($scope, $ionicLoading, $stateParams, attractionService) {
+  $scope.items = [];
 
-    $scope.info_position = {
-        lat: 43.07493,
-        lng: -89.381388
-    };
+  attractionService.getAttractions($stateParams.categoryId).then(function(result){
+    $scope.items = result;
+    console.log(result);
+  }, function(msg){
+    console.log(msg);
+  });
 
-    $scope.center_position = {
-        lat: 43.07493,
-        lng: -89.381388
-    };
+  $scope.center_position = {
+      lat: 43.07493,
+      lng: -89.381388
+  };
 
-    $scope.my_location = "";
+  $scope.$on('mapInitialized', function(event, map) {
+      $scope.map = map;
+  });
 
-    $scope.$on('mapInitialized', function(event, map) {
-        $scope.map = map;
-    });
+  $scope.centerOnMe= function(){
 
-    $scope.centerOnMe= function(){
+      $scope.positions = [];
 
-        $scope.positions = [];
+      $ionicLoading.show({
+          template: 'Loading...'
+      });
 
-        $ionicLoading.show({
-            template: 'Loading...'
-        });
+      // with this function you can get the user’s current position
+      // we use this plugin: https://github.com/apache/cordova-plugin-geolocation/
+      navigator.geolocation.getCurrentPosition(function(position) {
+          var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+          $scope.current_position = {lat: pos.G,lng: pos.K};
+          $scope.my_location = pos.G+", "+pos.K;
+          $scope.map.setCenter(pos);
+          $ionicLoading.hide();
+      });
+  };
 
-        // with this function you can get the user’s current position
-        // we use this plugin: https://github.com/apache/cordova-plugin-geolocation/
-        navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            $scope.current_position = {lat: pos.G,lng: pos.K};
-            $scope.my_location = pos.G+", "+pos.K;
-            $scope.map.setCenter(pos);
-            $ionicLoading.hide();
-        });
-    };
-
-    $scope.centerOnMe();
+  //$scope.centerOnMe();
 });
