@@ -40,7 +40,11 @@ appControllers.controller('menuCtrl', function ($scope, $timeout, $mdUtil, $mdSi
     }
 
     $scope.openBrower = function () {
-      $cordovaInAppBrowser.open('http://baidu.com', '_blank')
+        var defaultOptions = {
+            location: 'no'
+        };
+
+        $cordovaInAppBrowser.open('http://search.asiatravelgroup.com.sg/', '_self', defaultOptions)
         .then(function(event) {
           // success
         })
