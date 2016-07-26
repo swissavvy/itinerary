@@ -8,7 +8,7 @@
     <!--end left button on navigation bar-->
 
     <ion-content scroll="false">
-        <div class="mapWrap"  data-tap-disabled="true">
+        <div class="mapWrap" data-tap-disabled="true">
             <div class="row center-map-action">
                 <div class="col">
                     <div class="list">
@@ -21,12 +21,15 @@
                     </div>
                 </div>
             </div>
-            <map center="{{center_position.lat}},{{center_position.lng}}" zoom="15">
-                <info-window id="{{item.id}}" position="{{center_position.lat}},{{center_position.lng}}" visible="true">
-                    <div ng-non-bindable="">
-                        <a>亚历山大拱桥</a>
+            <map center="{{center_position.lat}},{{center_position.lng}}" zoom="15" default-style="true">
+
+                <custom-marker ng-repeat="item in items track by $index"
+                   id="custom-marker-{{$index}}"
+                   position="{{item.coordinates}}">
+                    <div>
+                        {{item.title}}
                     </div>
-                </info-window>
+                </custom-marker>
             </map>
         </div>
     </ion-content>

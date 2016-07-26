@@ -238,7 +238,7 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, userServic
     };
 })
 
-.controller('MapsCtrl', function($scope, $ionicLoading, $stateParams, attractionService) {
+.controller('MapsCtrl', function($scope, $ionicLoading, $stateParams, attractionService, NgMap) {
   $scope.items = [];
 
   attractionService.getAttractions($stateParams.categoryId).then(function(result){
@@ -249,12 +249,12 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, userServic
   });
 
   $scope.center_position = {
-      lat: 43.07493,
-      lng: -89.381388
+    lat: 3.1342644412676877,
+    lng: 101.67062084374993
   };
 
-  $scope.$on('mapInitialized', function(event, map) {
-      $scope.map = map;
+  NgMap.getMap().then(function(map) {
+    $scope.map = map;
   });
 
   $scope.centerOnMe= function(){
@@ -270,11 +270,11 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, userServic
       navigator.geolocation.getCurrentPosition(function(position) {
           var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
           $scope.current_position = {lat: pos.G,lng: pos.K};
-          $scope.my_location = pos.G+", "+pos.K;
+          $scope.my_location = pos.lat()+", "+pos.lng();
           $scope.map.setCenter(pos);
           $ionicLoading.hide();
       });
   };
 
-  //$scope.centerOnMe();
+  $scope.centerOnMe();
 });
