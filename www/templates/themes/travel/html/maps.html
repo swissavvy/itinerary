@@ -25,6 +25,7 @@
 
                 <custom-marker ng-repeat="item in items track by $index"
                    id="custom-marker-{{$index}}"
+                   on-click="redirect('/app/viewSite/{{item.id}}')"
                    position="{{item.coordinates}}">
                     <div>
                         {{item.title}}

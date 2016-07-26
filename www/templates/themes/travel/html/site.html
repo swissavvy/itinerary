@@ -70,21 +70,11 @@
                     景点地图
                 </div>
                 <div class="content">
-                    <map center="{{site.coordinates}}" zoom="15">
-                        <marker
-                            position="{{site.coordinates}}"
+                    <map center="{{site.coordinates}}" zoom="15" default-style="true">
+                        <marker position="{{site.coordinates}}"
                             title="{{site.title}}"
                             visible="true">
                         </marker>
-
-                        <info-window id="{{site.id}}" position="{{site.coordinates}}" visible="true">
-                            <div ng-non-bindable="">
-                                <b>{{site.title}}</b><br>
-                                <!--<img style=" border-radius: 24px;" src="http://lorempixel.com/50/50/food/?v=1">-->
-                                <!--<img style=" border-radius: 24px;" src="http://lorempixel.com/50/50/food/?v=2">-->
-                                <!--<img style=" border-radius: 24px;" src="http://lorempixel.com/50/50/food/?v=3">-->
-                            </div>
-                        </info-window>
                     </map>
                 </div>
             </div>

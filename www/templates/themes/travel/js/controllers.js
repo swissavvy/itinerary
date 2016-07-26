@@ -32,7 +32,7 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, userServic
     };
 })
 
-.controller('siteCtrl', function ($scope, $stateParams, $filter, $http, $mdBottomSheet, $sce) {
+.controller('siteCtrl', function ($scope, $stateParams, $filter, $http, $mdBottomSheet, NgMap) {
     var id = $stateParams.id;
     $http.get(window.globalVariable.apiDomain + '/api/site/view', {params: {id: id}}).success(function (result) {
         $scope.site = result.data;
@@ -43,6 +43,10 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, userServic
         lat: 43.07493,
         lng: -89.381388
     };
+
+    NgMap.getMap().then(function(map) {
+      $scope.map = map;
+    });
 
     // sharedProduct fro show shared social bottom sheet by calling sharedSocialBottomSheetCtrl controller.
     $scope.sharedProduct = function ($event, product) {
@@ -238,7 +242,7 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, userServic
     };
 })
 
-.controller('MapsCtrl', function($scope, $ionicLoading, $stateParams, attractionService, NgMap) {
+.controller('MapsCtrl', function($scope, $ionicLoading, $stateParams, attractionService, NgMap, $location) {
   $scope.items = [];
 
   attractionService.getAttractions($stateParams.categoryId).then(function(result){
@@ -274,6 +278,10 @@ appControllers.controller('myBookingCtrl', function ($scope, $filter, userServic
           $scope.map.setCenter(pos);
           $ionicLoading.hide();
       });
+  };
+
+  $scope.redirect = function (event, url) {
+    $location.path(url)
   };
 
   $scope.centerOnMe();
